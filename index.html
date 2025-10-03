@@ -1,161 +1,146 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Test HTML Page</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>FM Sirisara — Listen Online</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --accent: #0066cc;
-      --muted: #666;
-      --card-bg: #f8fafc;
+      --bg:#0b0f13;
+      --card:#0f1720;
+      --muted:#9aa6b2;
+      --accent:#00D2FF;
+      --glass: rgba(255,255,255,0.03);
+      font-family: Inter, system-ui, Arial, sans-serif;
     }
-    body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial; margin: 0; padding: 24px; background: #fff; color: #111; }
-    header { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:16px; }
-    h1 { font-size:1.3rem; margin:0; }
-    .container { max-width:900px; margin:0 auto; }
-    .card { background: var(--card-bg); border-radius:10px; padding:16px; box-shadow: 0 6px 18px rgba(15,23,42,0.06); margin-bottom:16px; }
-    .row { display:flex; gap:12px; flex-wrap:wrap; }
-    label { display:block; font-size:0.9rem; color:var(--muted); margin-bottom:6px; }
-    input[type="text"], input[type="email"], textarea {
-      width:100%; padding:10px; border-radius:8px; border:1px solid #ddd; font-size:0.95rem;
-    }
-    button { background:var(--accent); color:white; border:none; padding:10px 14px; border-radius:8px; cursor:pointer; }
-    button.secondary { background:transparent; color:var(--accent); border:1px solid var(--accent); }
-    footer { text-align:center; color:var(--muted); font-size:0.85rem; margin-top:18px; }
-    pre { background:#0b1020; color:#dff; padding:10px; overflow:auto; border-radius:6px; font-size:0.85rem; }
-    @media (min-width:720px) {
-      .two-col { display:grid; grid-template-columns: 1fr 320px; gap:12px; align-items:start; }
-    }
+    *{box-sizing:border-box}
+    body {margin:0; background:linear-gradient(180deg,#050608 0%, #07121a 100%); color:#e6eef6;}
+    .container {max-width:1100px;margin:36px auto;padding:24px}
+    header {display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .brand {display:flex;align-items:center;gap:14px}
+    .logo {width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#7ef0ff);display:flex;align-items:center;justify-content:center;color:#021; font-weight:700}
+    h1 {margin:0;font-size:20px}
+    p.lead {margin:0;color:var(--muted)}
+    main {margin-top:26px;display:grid;grid-template-columns:1fr 360px;gap:24px}
+    @media(max-width:880px){main{grid-template-columns:1fr} .sidebar{order:2}}
+    .card {background:var(--card);border-radius:14px;padding:18px;box-shadow:0 6px 30px rgba(2,8,18,0.6);}
+    .hero {padding:28px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));}
+    .meta {display:flex;gap:12px;align-items:center;margin-bottom:12px}
+    .chip {padding:6px 10px;border-radius:999px;background:var(--glass);color:var(--muted);font-size:13px}
+    .desc {color:#cfe9f7;line-height:1.5}
+    .controls {display:flex;align-items:center;gap:12px;margin-top:16px}
+    .btn {padding:10px 14px;border-radius:10px;background:transparent;border:1px solid rgba(255,255,255,0.06);cursor:pointer}
+    .btn.primary {background:linear-gradient(90deg,var(--accent),#66f0ff);color:#021;border:none}
+    .sidebar .card {display:flex;flex-direction:column;gap:12px}
+    .now {font-weight:600}
+    footer {margin-top:28px;color:var(--muted);font-size:13px;display:flex;justify-content:space-between}
+    .socials a {color:var(--muted);text-decoration:none;margin-left:10px}
+    .player-wrap {padding:14px;border-radius:10px;background:linear-gradient(180deg, rgba(1,8,12,0.3), rgba(255,255,255,0.02));}
+    .small {font-size:13px;color:var(--muted)}
   </style>
 </head>
 <body>
   <div class="container">
     <header>
-      <h1>Test HTML Page</h1>
-      <nav>
-        <a href="#form">Form</a> • <a href="#actions">Actions</a> • <a href="#info">Info</a>
-      </nav>
+      <div class="brand">
+        <div class="logo">SR</div>
+        <div>
+          <h1>FM Sirisara</h1>
+          <p class="lead">Your community voice — music, news & more</p>
+        </div>
+      </div>
+      <div class="meta">
+        <div class="chip">Live 24/7</div>
+        <div class="chip">Listen Online</div>
+      </div>
     </header>
 
-    <section id="preview" class="card">
-      <strong>Live preview</strong>
-      <p id="greeting">Hello — click the <em>Greet</em> button below to update this message.</p>
-      <div class="row">
-        <button id="greetBtn">Greet</button>
-        <button id="timeBtn" class="secondary">Show Time</button>
-        <button id="logBtn" class="secondary">Console Test</button>
-      </div>
-    </section>
-
-    <section id="form" class="card two-col">
-      <div>
-        <strong>Sample form</strong>
-        <p style="color:var(--muted)">Enter data and press Submit to see form handling (no server required).</p>
-        <form id="sampleForm">
-          <label for="name">Name</label>
-          <input id="name" name="name" type="text" placeholder="Your name" required>
-
-          <label for="email">Email</label>
-          <input id="email" name="email" type="email" placeholder="you@example.com">
-
-          <label for="message">Message</label>
-          <textarea id="message" name="message" rows="4" placeholder="Write something..."></textarea>
-
-          <div style="margin-top:10px;">
-            <button type="submit">Submit</button>
-            <button type="button" id="resetBtn" class="secondary">Reset</button>
+    <main>
+      <section>
+        <div class="card hero">
+          <div class="meta">
+            <div class="chip">Now Playing</div>
+            <div class="chip">FM Sirisara</div>
           </div>
-        </form>
-        <div id="formResult" style="margin-top:10px;color:var(--muted)"></div>
-      </div>
+          <h2 style="margin-top:8px;margin-bottom:10px">Welcome to FM Sirisara — Listen live on web</h2>
+          <p class="desc">Tune in for local news, curated music, and stories from our community. Use the player on the right, or open Sirisara from any device. We’re delighted you’re here — enjoy the show.</p>
 
-      <aside class="card" style="padding:12px;">
-        <strong>Quick test utilities</strong>
-        <p style="font-size:0.95rem; color:var(--muted)">Use these to test interactions and console output.</p>
-        <ul>
-          <li>Greet — update page text</li>
-          <li>Show Time — display current local time</li>
-          <li>Console Test — logs sample object to console</li>
-        </ul>
+          <div class="controls">
+            <button class="btn primary" id="openPlayer">Open Player</button>
+            <button class="btn" id="shareBtn">Share Station</button>
+          </div>
+        </div>
+
+        <div style="margin-top:18px" class="card">
+          <h3 style="margin:0 0 8px 0">Contact & Schedule</h3>
+          <p class="small" style="margin:0 0 8px 0;color:var(--muted)">
+            Studio: Anuradhapura, Sri Lanka<br>
+            Email: info@fmsirisara.lk (replace with real)
+          </p>
+          <p class="small">Want a custom player color or different theme? Tell me the hex color and I’ll update it.</p>
+        </div>
+      </section>
+
+      <aside class="sidebar">
+        <div class="card player-wrap">
+          <h3 style="margin:0 0 8px 0">Live Player</h3>
+          <p class="small" style="margin:0 0 10px 0;color:var(--muted)">Click play inside the widget below — the player is embedded from your caster.fm account.</p>
+
+          <!-- Fixed Embed -->
+          <div data-type="newStreamPlayer"
+               data-publicToken="39f1d274-c5a6-4820-a712-c7a18049a0c2"
+               data-theme="dark"
+               data-color="00D2FF"
+               data-channelId="a002c9be-7e3e-4487-ac07-b1d17faf547e"
+               data-rendered="false"
+               class="cstrEmbed">
+            <a href="https://www.caster.fm">Shoutcast Hosting</a>
+            <a href="https://www.caster.fm">Stream Hosting</a>
+            <a href="https://www.caster.fm">Radio Server Hosting</a>
+          </div>
+          <script src="https://cdn.cloud.caster.fm/widgets/embed.js"></script>
+
+          <div style="margin-top:12px;display:flex;gap:8px;align-items:center">
+            <button class="btn" id="playHint">How to play</button>
+          </div>
+        </div>
+
+        <div style="margin-top:14px" class="card">
+          <h4 style="margin:0 0 8px 0">Follow Us</h4>
+          <div class="socials">
+            <a href="#">Website</a>
+            <a href="#">Facebook</a>
+            <a href="#">X</a>
+          </div>
+        </div>
       </aside>
-    </section>
-
-    <section id="actions" class="card">
-      <strong>Injectable script area</strong>
-      <p id="scriptOutput" style="color:var(--muted)">No actions yet.</p>
-      <pre id="debugArea">// debug output appears here</pre>
-    </section>
-
-    <section id="info" class="card">
-      <strong>Useful snippets</strong>
-      <p style="color:var(--muted)">You can copy these small JS snippets into the console for quick tests.</p>
-      <pre>
-/* Get form values */
-const f = document.getElementById('sampleForm');
-console.log('name:', f.name.value, 'email:', f.email.value);
-
-/* Trigger a click */
-document.getElementById('greetBtn').click();
-      </pre>
-    </section>
+    </main>
 
     <footer>
-      Test page • Save as <code>test.html</code> and open with your browser.
+      <div>© FM Sirisara — All rights reserved</div>
+      <div class="small">Built with ❤️</div>
     </footer>
   </div>
 
   <script>
-    // Utilities
-    const greetBtn = document.getElementById('greetBtn');
-    const timeBtn  = document.getElementById('timeBtn');
-    const logBtn   = document.getElementById('logBtn');
-    const greeting = document.getElementById('greeting');
-    const debug = document.getElementById('debugArea');
-
-    greetBtn.addEventListener('click', () => {
-      const name = document.getElementById('name').value.trim() || 'friend';
-      greeting.textContent = `Hello, ${name}! This page is working 🎉`;
-      debug.textContent = `Greeted: ${name} — ${new Date().toISOString()}`;
+    // UI behavior
+    document.getElementById('openPlayer').addEventListener('click', ()=>{
+      const el = document.querySelector('.cstrEmbed');
+      if(!el) return alert('Player not loaded yet');
+      el.scrollIntoView({behavior:'smooth', block:'center'});
     });
-
-    timeBtn.addEventListener('click', () => {
-      const now = new Date();
-      document.getElementById('scriptOutput').textContent = 'Current time: ' + now.toLocaleString();
-      debug.textContent = 'Time shown: ' + now.toString();
+    document.getElementById('shareBtn').addEventListener('click', ()=>{
+      const url = location.href;
+      if(navigator.share){
+        navigator.share({title:'FM Sirisara — Listen Live', url}).catch(()=>{});
+      }else{
+        navigator.clipboard.writeText(url).then(()=>alert('Link copied to clipboard'));
+      }
     });
-
-    logBtn.addEventListener('click', () => {
-      console.log('Test object:', { ok: true, time: new Date().toISOString() });
-      document.getElementById('scriptOutput').textContent = 'Check browser console (F12) for logged object.';
-      debug.textContent = 'Console test executed.';
+    document.getElementById('playHint').addEventListener('click', ()=>{
+      alert('Press the play button inside the widget. On some browsers, autoplay is blocked — you must tap play.');
     });
-
-    // Form handling (no server)
-    const form = document.getElementById('sampleForm');
-    const formResult = document.getElementById('formResult');
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const data = {
-        name: form.name.value.trim(),
-        email: form.email.value.trim(),
-        message: form.message.value.trim()
-      };
-      formResult.textContent = 'Form captured — open console to view the object.';
-      console.log('Form submitted:', data);
-      // show a small client-side acknowledgment
-      greeting.textContent = `Thanks, ${data.name || 'friend'} — form saved locally.`;
-    });
-
-    document.getElementById('resetBtn').addEventListener('click', () => {
-      form.reset();
-      formResult.textContent = '';
-      debug.textContent = 'Form reset.';
-    });
-
-    // Small self-test on load
-    console.info('Test HTML page loaded:', new Date().toISOString());
-    debug.textContent = 'Page loaded. Open the console for more details.';
   </script>
 </body>
 </html>
