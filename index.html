@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>FM Sirisara — Listen Online</title>
+  <link rel="icon" type="image/png" href="/favicon.png">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -19,7 +20,8 @@
     .container {max-width:1100px;margin:36px auto;padding:24px}
     header {display:flex;align-items:center;justify-content:space-between;gap:16px}
     .brand {display:flex;align-items:center;gap:14px}
-    .logo {width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#7ef0ff);display:flex;align-items:center;justify-content:center;color:#021; font-weight:700}
+    .logo {width:64px;height:64px;border-radius:12px;object-fit:cover;}
+    .logo-placeholder {width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#7ef0ff);display:flex;align-items:center;justify-content:center;color:#021; font-weight:700}
     h1 {margin:0;font-size:20px}
     p.lead {margin:0;color:var(--muted)}
     main {margin-top:26px;display:grid;grid-template-columns:1fr 360px;gap:24px}
@@ -38,13 +40,21 @@
     .socials a {color:var(--muted);text-decoration:none;margin-left:10px}
     .player-wrap {padding:14px;border-radius:10px;background:linear-gradient(180deg, rgba(1,8,12,0.3), rgba(255,255,255,0.02));}
     .small {font-size:13px;color:var(--muted)}
+    .contact-section {margin-top:32px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.08)}
+    .contact-title {font-size:16px;font-weight:600;margin-bottom:16px;color:#e6eef6}
+    .social-links {display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+    .social-link {display:flex;align-items:center;gap:10px;padding:10px 16px;background:var(--glass);border-radius:10px;text-decoration:none;color:#e6eef6;transition:all 0.2s ease;border:1px solid rgba(255,255,255,0.06)}
+    .social-link:hover {background:rgba(255,255,255,0.08);transform:translateY(-2px);border-color:rgba(255,255,255,0.12)}
+    .social-icon {width:24px;height:24px;object-fit:contain}
+    .social-name {font-size:14px;font-weight:500}
   </style>
 </head>
 <body>
   <div class="container">
     <header>
       <div class="brand">
-        <div class="logo">SR</div>
+        <img src="/logo.png" alt="FM Sirisara Logo" class="logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="logo-placeholder" style="display:none">SR</div>
         <div>
           <h1>FM Sirisara</h1>
           <p class="lead">Your community voice — music, news & more</p>
@@ -118,7 +128,27 @@
     </main>
 
     <footer>
-      <div>© FM Sirisara — All rights reserved</div>
+      <div>
+        <div>© FM Sirisara — All rights reserved</div>
+
+        <div class="contact-section">
+          <div class="contact-title">Connect With Us</div>
+          <div class="social-links">
+            <a href="https://facebook.com/fmsirisara" target="_blank" rel="noopener noreferrer" class="social-link">
+              <img src="/facebook-logo.png" alt="Facebook" class="social-icon" onerror="this.src='https://cdn-icons-png.flaticon.com/512/733/733547.png'">
+              <span class="social-name">Facebook</span>
+            </a>
+            <a href="https://wa.me/94xxxxxxxxx" target="_blank" rel="noopener noreferrer" class="social-link">
+              <img src="/whatsapp-logo.png" alt="WhatsApp" class="social-icon" onerror="this.src='https://cdn-icons-png.flaticon.com/512/733/733585.png'">
+              <span class="social-name">WhatsApp</span>
+            </a>
+            <a href="https://tiktok.com/@fmsirisara" target="_blank" rel="noopener noreferrer" class="social-link">
+              <img src="/tiktok-logo.png" alt="TikTok" class="social-icon" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3046/3046121.png'">
+              <span class="social-name">TikTok</span>
+            </a>
+          </div>
+        </div>
+      </div>
       <div class="small">Built with ❤️</div>
     </footer>
   </div>
